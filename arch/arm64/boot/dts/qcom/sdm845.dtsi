@@ -510,7 +510,11 @@
 					dev = "/dev/block/platform/soc/1d84000.ufshc/by-name/vendor";
 					type = "ext4";
 					mnt_flags = "ro,barrier=1,discard";
+<<<<<<< HEAD
 					fsmgr_flags = "wait,verify";
+=======
+					fsmgr_flags = "wait,slotselect";
+>>>>>>> 9792b33dfaa9... dt: remove avb flag for vendor
 				};
 			};
 		};
