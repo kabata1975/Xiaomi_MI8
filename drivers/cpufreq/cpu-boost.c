@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2013-2015,2017, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2018 XiaoMi, Inc.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -44,6 +45,9 @@ static bool input_boost_enabled;
 
 static unsigned int input_boost_ms = 40;
 module_param(input_boost_ms, uint, 0644);
+
+static unsigned int powerkey_input_boost_ms = 400;
+module_param(powerkey_input_boost_ms, uint, 0644);
 
 #ifdef CONFIG_DYNAMIC_STUNE_BOOST
 static int dynamic_stune_boost;
@@ -141,7 +145,7 @@ static int get_input_boost_freq(char *buf, const struct kernel_param *kp)
 		s = &per_cpu(sync_info, cpu);
 		if (type == default_input_boost)
 			boost_freq = s->input_boost_freq;
-		else if(type == powerkey_input_boost)
+		else if (type == powerkey_input_boost)
 			boost_freq = s->powerkey_input_boost_freq;
 		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt,
 				"%d:%u ", cpu, boost_freq);
